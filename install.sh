@@ -1,5 +1,4 @@
 #!/bin/bash
-echo "Starting Install"
 
 # Installing all Deps and Configs
 
@@ -9,6 +8,14 @@ if brew ls --versions fish > /dev/null; then
 else
   echo "installing fish"
   brew install fish
+fi
+
+## Git
+if git --version > /dev/null; then
+  echo "git exists"
+else 
+  echo "installing git"
+  brew install git
 fi
 
 ## Omf (pkg manager for fish)
