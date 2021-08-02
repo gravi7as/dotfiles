@@ -61,6 +61,7 @@ else
   brew install hammerspoon --cask
 fi
 
+## Amethyst
 if brew info --cask amethyst > /dev/null; then
   echo "amethyst exists"
 else 
