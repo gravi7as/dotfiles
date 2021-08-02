@@ -2,6 +2,10 @@
 
 # Installing all Deps and Configs
 
+#### Deps ####
+
+echo "installing deps"
+
 ## Fish
 if brew ls --versions fish > /dev/null; then
   echo "fish exists"
@@ -57,18 +61,25 @@ else
   brew install hammerspoon --cask
 fi
 
-## Alacritty Configs
+#### Configs ####
+## Alacritty
+
+echo "copying alacritty configs"
+
 if [ ! -d ~/.config/alacritty ]; then
   mkdir ~/.config alacritty
-  cp alacritty.yml ~/.config/alacritty
 fi
 
-## Tmux Configs
-if [ ! -f ~/.tmux.conf ]; then
-  cp ./tmux/.tmux.conf ~/
-  source ~/.tmux.conf
-fi
+# copy config
+yes | cp -rf ./alacritty/alacritty.yml ~/.config/alacritty
 
+# copy theme file
+yes | cp -rf ./alacritty/dracula.yml ~/.config/alacritty
 
+## Tmux
 
+echo "copying tmux configs"
+
+yes | cp -rf ./tmux/.tmux.conf ~/
+tmux source-file ~/.tmux.conf
 
