@@ -4,7 +4,7 @@
 
 #### Deps ####
 
-echo "installing deps"
+echo "----- deps -----"
 
 ## Fish
 if brew ls --versions fish > /dev/null; then
@@ -61,9 +61,25 @@ else
   brew install hammerspoon --cask
 fi
 
-#### Configs ####
-## Alacritty
+if brew info --cask amethyst > /dev/null; then
+  echo "amethyst exists"
+else 
+  brew install --cask amethyst
+fi
 
+#### Configs ####
+echo "----- configs -----"
+
+## Hammerspoon
+echo "copying hammerspoon configs"
+
+if [ ! -d ~/.hammerspoon ]; then
+  mkdir ~/.hammerspoon
+fi
+
+yes | cp -rf ./hammerspoon/* ~/.hammerspoon/
+
+## Alacritty
 echo "copying alacritty configs"
 
 if [ ! -d ~/.config/alacritty ]; then
